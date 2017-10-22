@@ -122,9 +122,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#myModal2">
-                                    <i class="fa fa-bullhorn"></i>
-                                    <span>Denunciar</span>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    Denuncias
                                 </a>
                             </li>
                             <li>
@@ -331,72 +331,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Actualizar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel2" align="center">Subir Denuncia</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-inline" action="{% url 'landingpage' %}" method="post">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="typeOfAbuse">Tipo de maltrato:</label>
-                            <select name="typeOfAbuse" class="form-control" id="typeOfAbuse" value="Seleccione tipo de maltrato">
-                                <option value="AbandonoEnCalle">Abandono en calle</option>
-                                <option value="ExposicionATemperaturasExtremas">Exposición a temperaturas extremas</option>
-                                <option value="FaltaDeAgua">Falta de agua</option>
-                                <option value="FaltaDeComida">Falta de comida</option>
-                                <option value="Violencia">Violencia</option>
-                                <option value="VentaAmbulante">Venta ambulante</option>
-                            </select>
-                        </div>
-                        <hr>
-                        <div class="form-group">
-                            <label for="animal">Tipo de animal:</label>
-                            <select name="animal" class="form-control" id="animal" value="Seleccione tipo del animal">
-                                <option value="Perro">Perro</option>
-                                <option value="Gato">Gato</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                        <hr>
-                        <label style="float:left !important">Sexo:</label>
-                        <div class="genderDiv">
-                            <input type="radio" name="sexo" id="macho" style="margin:10px" value="M">
-                            <label for="macho" style="margin:10px">Macho</label>
-                            <input type="radio" name="sexo" id="hembra" style="margin:10px" value="H">
-                            <label for="hembra" style="margin:10px">Hembra</label>
-                        </div>
-                        <hr>
-                        <div class="form-group">
-                            <label for="color">Color:</label>
-                            <input type="text" name="color" id="color">
-                        </div>
-                        <hr>
-                        <label style="float:left !important">¿Herido?:</label>
-                        <div class="genderDiv">
-                            <input type="radio" name="herido" id="si" style="margin:10px" value="si">
-                            <label for="si" style="margin:10px">Sí</label>
-                            <input type="radio" name="herido" id="no" style="margin:10px" value="no">
-                            <label for="no" style="margin:10px">No</label>
-                        </div>
-                        <hr>
-                        <div class="form-group">
-                            <label for="comentario">Comentario:</label>
-                            <input type="text" name="comentario" id="comentario">
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-primary" style="height:50px; width:200px; float:left" value="Enviar denuncia">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="height:50px; width:200px">Cancelar</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
