@@ -7,11 +7,11 @@ import users.views
 app_name ='users'
 
 urlpatterns =[
-    url(r'^signup/$', users.views.signup , name = 'signup'),
+    url(r'^signup/$', users.views.signup, name='signup'),
     url(r'^login/$',
-        LoginView.as_view(template_name= "login.html",
-                          authentication_form= AuthenticationForm,
+        LoginView.as_view(template_name="login.html",
+                          authentication_form=AuthenticationForm,
                           redirect_authenticated_user=True),
-        name ='login'),
+        name='login'),
 
 ]
