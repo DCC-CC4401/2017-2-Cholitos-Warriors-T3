@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, Permission, Group
 from Cholito.models import ONG, Municipalidad
-from PIL import Image
 
 class CholitoUser (models.Model):
     """
