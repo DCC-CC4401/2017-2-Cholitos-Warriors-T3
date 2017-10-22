@@ -53,7 +53,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="login.html">Ingresar</a>
+                                <a href="{% url 'users:login' %}">Ingresar</a>
                             </li>
                         </ul>
                     </div>
@@ -340,6 +340,7 @@
             markerOne.setMap(map);
             infowindow.open(map,markerOne);
         }
+
         function placeMarker(map, location) {
             var marker = new google.maps.Marker({
                 position: location,

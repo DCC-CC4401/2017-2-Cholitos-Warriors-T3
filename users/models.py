@@ -18,8 +18,8 @@ class CholitoUser (models.Model):
     profile_picture = models.ImageField(upload_to="users/profile_pictures")
 
     #Groups
-    municipalidad = models.ForeignKey(Municipalidad, blank=True, null=True) #TODO: App para Municipalidad
-    ong = models.ForeignKey(ONG, blank= True, null=True) #TODO: App para ONG
+    #municipalidad = models.ForeignKey(Municipalidad, blank=True, null=True) #TODO: App para Municipalidad
+    #ong = models.ForeignKey(ONG, blank= True, null=True) #TODO: App para ONG
 
     def __unicode__(self):
         return self.user.username

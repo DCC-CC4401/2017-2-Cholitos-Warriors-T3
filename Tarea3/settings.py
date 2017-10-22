@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'denuncias.apps.DenunciasConfig',
     'users.apps.NameConfig',
     'Cholito.apps.CholitoConfig',
+    'adoption.apps.AdoptionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'Tarea3.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'Cholito/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
