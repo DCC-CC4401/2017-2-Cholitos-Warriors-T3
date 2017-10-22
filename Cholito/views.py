@@ -27,7 +27,7 @@ def denuncia(request):
         animal = request.POST['animal']
         hurt = False
         gender = request.POST['sexo']
-        if(request.POST['herido'] == 'on'):
+        if(request.POST['herido'] == 'si'):
             hurt = True
         color = request.POST['color']
         comment = request.POST['comentario']
