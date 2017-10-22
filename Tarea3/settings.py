@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'municipalidad.apps.MunicipalidadConfig',
     'denuncias.apps.DenunciasConfig',
     'users.apps.NameConfig',
     'Cholito.apps.CholitoConfig',
