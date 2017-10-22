@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class AdoptionForm (models.Model):
     """
@@ -19,4 +20,7 @@ class AdoptionForm (models.Model):
     in_adoption_from = models.DateTimeField()
     description = models.TextField(max_length=140)
     adopted = models.BooleanField(False)
+
+    def __str__(self):
+        return self.name + ", "+ self.type
 

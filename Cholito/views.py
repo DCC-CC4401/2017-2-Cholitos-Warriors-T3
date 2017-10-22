@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-import sys
 # Create your views here.
 
 url = ''
