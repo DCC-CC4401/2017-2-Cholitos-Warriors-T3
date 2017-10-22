@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block botones_laterales %}
+    {% load staticfiles %}
+    <!-- Optionally, you can add icons to the links -->
+    <li class="active">
+        <a href="#">
+            <i class="fa fa-bullhorn"></i>
+            <span>Denuncias</span>
+        </a>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-bar-chart"></i>
+            <span>Estadísticas</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="{% url 'municipalidad:statsdenuncias' %}">
+                    <i class="fa fa-circle-o"></i>
+                    Denuncias
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'municipalidad:statsongs' %}">
+                    <i class="fa fa-circle-o"></i>
+                    ONG
+                </a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+{% block contenido %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Denuncias Recibidas
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="box">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Tipo Denuncia</th>
+                    <th scope="col">Animal</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Herido</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Venta Ambulante</td>
+                    <td>Perro</td>
+                    <td>Avda Blanco Encalada 2445</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Violencia</td>
+                    <td>Perro</td>
+                    <td>Grajales 2623</td>
+                    <td>Si</td>
+                </tr>
+                <tr>
+                    <td>Falta de Agua</td>
+                    <td>Gato</td>
+                    <td>Av Matta 56</td>
+                    <td>No</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+{% endblock %}
+{% block script %}
+    <!-- REQUIRED JS SCRIPTS -->
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+{% endblock %}

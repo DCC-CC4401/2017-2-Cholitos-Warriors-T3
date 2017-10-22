@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block botones_laterales %}
+    <li>
+        <a href="{% url 'municipalidad:fichasdenuncias'%}">
+            <i class="fa fa-bullhorn"></i>
+            <span>Denuncias</span>
+        </a>
+    </li>
+    <li class="treeview active menu-open">
+        <a href="#">
+            <i class="fa fa-bar-chart"></i>
+            <span>Estadísticas</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-circle-o"></i>
+                    Denuncias
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'municipalidad:statsongs' %}">
+                    <i class="fa fa-circle-o"></i>
+                    ONG
+                </a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Fundación EDRA
+            <small>Estadísticas</small>
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Bar chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <h3 class="box-title">Adopción</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
+                                       <i class="fa fa-times"></i>
+                            </button> -->
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="bar-chart-1" class="c-bar-chart"></div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-6">
+                <!-- Bar chart -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <h3 class="box-title">Esterilización</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <!-- <button type="button" class="btn btn-box-tool" data-widget="remove">
+                                       <i class="fa fa-times"></i>
+                                   </button> -->
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div id="bar-chart-2" class="c-bar-chart"></div>
+                    </div>
+                    <!-- /.box-body-->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}
+
+{% block script %}
+    {% load staticfiles %}
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.min.js'%}"></script>
+    <!-- FLOT CHARTS -->
+    <script src="{% static 'bower_components/Flot/jquery.flot.js'%}"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="{% static 'bower_components/Flot/jquery.flot.resize.js'%}"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="{% static 'bower_components/Flot/jquery.flot.pie.js'%}"></script>
+    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+    <script src="{% static 'bower_components/Flot/jquery.flot.categories.js'%}"></script>
+
+    <!-- Page script -->
+    <script>
+        $(function () {
+            /*
+            * BAR CHART
+            * ---------
+            */
+            var bar_data = {
+                data : [['Abril', 10], ['Mayo', 8], ['Junio', 4], ['Julio', 13], ['Agosto', 17], ['Septiembre', 2]],
+                color: '#3c8dbc'
+            };
+            $.plot('#bar-chart-1', [bar_data], {
+                grid  : {
+                borderWidth: 1,
+                borderColor: '#f3f3f3',
+                tickColor  : '#f3f3f3'
+                },
+                series: {
+                bars: {
+                show    : true,
+                barWidth: 0.5,
+                align   : 'center'
+                }
+                },
+                xaxis : {
+                mode      : 'categories',
+                tickLength: 0
+                }
+            });
+            var bar_data = {
+                data : [['Abril', 16], ['Mayo', 5], ['Junio', 11], ['Julio', 16], ['Agosto', 8], ['Septiembre', 1]],
+                color: '#3c8dbc'
+            };
+            $.plot('#bar-chart-2', [bar_data], {
+                grid  : {
+                borderWidth: 1,
+                borderColor: '#f3f3f3',
+                tickColor  : '#f3f3f3'
+                },
+                series: {
+                bars: {
+                show    : true,
+                barWidth: 0.5,
+                align   : 'center'
+                }
+                },
+                xaxis : {
+                mode      : 'categories',
+                tickLength: 0
+                }
+            })
+        /* END BAR CHART */
+
+        });
+
+        /*
+        * Custom Label formatter
+        * ----------------------
+        */
+        function labelFormatter(label, series) {
+            return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+            + label
+            + '<br>'
+            + Math.round(series.percent) + '%</div>'
+        }
+    </script>
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+    Both of these plugins are recommended to enhance the
+    user experience. -->
+{% endblock %}
