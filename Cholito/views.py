@@ -14,7 +14,7 @@ def landingPage(request):
         'ONGData':ongs
     }
 
-    if request.user.has_perm(''):
+    if  request.user.is_authenticated():
         return render(request, 'usuario-in-adoptar.html', context)
 
     else:
