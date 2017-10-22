@@ -36,3 +36,7 @@ def denuncia(request):
         denuncia = Denuncia(kindOfAbuse=typeOfAbuse, kindOfAnimal=animal, gender=gender, colour=color, hurt=hurt, comments=comment, location=lugar)
         denuncia.save()
     return landingPage(request)
+
+
+def denuncias_municipalidad(request):
+    return render(request, 'muni-denuncias-recibidas.html')
