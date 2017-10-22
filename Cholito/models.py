@@ -4,6 +4,3 @@ from django.db import models
 
 class ONG(models.Model):
     name = models.CharField(max_length=50)
-
-class Municipalidad(models.Model):
-    name = models.CharField(max_length=50)

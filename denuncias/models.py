@@ -9,6 +9,9 @@ class Place (models.Model):
     calle = models.CharField(max_length=50)
     numero = models.IntegerField()
 
+    def __str__(self):
+        return self.calle + " " + str(self.numero) + ", " + self.comuna
+
 class Denuncia (models.Model):
     kindOfAbuse = models.CharField(max_length=100)
     kindOfAnimal = models.CharField(max_length=100)
@@ -18,3 +21,6 @@ class Denuncia (models.Model):
     comments = models.TextField()
     denouncedDate = models.DateField(default=datetime.now, blank=True)
     location = models.ForeignKey(Place, blank=True, null=True)
+
+    def __str__(self):
+        return "Denuncia #" + str(self.id)

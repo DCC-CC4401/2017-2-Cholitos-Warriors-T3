@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+                {% block botones_laterales %}
+                    <!-- Optionally, you can add icons to the links -->
+                    <li>
+                        <a href="{% url 'municipalidad:fichasdenuncias' %}">
+                            <i class="fa fa-bullhorn"></i>
+                            <span>Denuncias</span>
+                        </a>
+                    </li>
+                    <li class="treeview active menu-open">
+                        <a href="#">
+                            <i class="fa fa-bar-chart"></i>
+                            <span>Estadísticas</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="{% url 'municipalidad:statsdenuncias' %}">
+                                    <i class="fa fa-circle-o"></i>
+                                    Denuncias
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    ONG
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endblock %}
+
+
+            {% block contenido %}
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    ONG
+                </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <!-- <div class="widget-user-header bg-black" style="background: url('dist/img/photo1.png') center center;"> -->
+                            <div class="widget-user-header bg-purple-active">
+                                <h3 class="widget-user-username">Fundación EDRA</h3>
+                                <h5 class="widget-user-desc">
+                                    <i class="fa fa-star c-star"></i>
+                                    182
+                                </h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="dist/img/ong-edra.png" alt="User Avatar">
+                            </div>
+                            <div class="c-box__footer">
+                                <a href="muni-estadisticas-denuncias.html" type="button" class="btn btn-primary">
+                                    <i class="fa fa-bar-chart"></i>
+                                    Ver Estadísticas
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <!-- <div class="widget-user-header bg-black" style="background: url('dist/img/photo1.png') center center;"> -->
+                            <div class="widget-user-header bg-purple-active">
+                                <h3 class="widget-user-username">Fundación EDRA</h3>
+                                <h5 class="widget-user-desc">
+                                    <i class="fa fa-star c-star"></i>
+                                    182
+                                </h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="dist/img/ong-edra.png" alt="User Avatar">
+                            </div>
+                            <div class="c-box__footer">
+                                <a href="muni-estadisticas-denuncias.html" type="button" class="btn btn-primary">
+                                    <i class="fa fa-bar-chart"></i>
+                                    Ver Estadísticas
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <!-- <div class="widget-user-header bg-black" style="background: url('dist/img/photo1.png') center center;"> -->
+                            <div class="widget-user-header bg-purple-active">
+                                <h3 class="widget-user-username">Fundación EDRA</h3>
+                                <h5 class="widget-user-desc">
+                                    <i class="fa fa-star c-star"></i>
+                                    182
+                                </h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="dist/img/ong-edra.png" alt="User Avatar">
+                            </div>
+                            <div class="c-box__footer">
+                                <a href="muni-estadisticas-denuncias.html" type="button" class="btn btn-primary">
+                                    <i class="fa fa-bar-chart"></i>
+                                    Ver Estadísticas
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-purple-active">
+                                <h3 class="widget-user-username">Fundación EDRA</h3>
+                                <h5 class="widget-user-desc">
+                                    <i class="fa fa-star c-star"></i>
+                                    182
+                                </h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="dist/img/ong-edra.png" alt="User Avatar">
+                            </div>
+                            <div class="c-box__footer">
+                                <a href="muni-estadisticas-denuncias.html" type="button" class="btn btn-primary">
+                                    <i class="fa fa-bar-chart"></i>
+                                    Ver Estadísticas
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-purple-active">
+                                <h3 class="widget-user-username">Fundación EDRA</h3>
+                                <h5 class="widget-user-desc">
+                                    <i class="fa fa-star c-star"></i>
+                                    182
+                                </h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="dist/img/ong-edra.png" alt="User Avatar">
+                            </div>
+                            <div class="c-box__footer">
+                                <a href="muni-estadisticas-denuncias.html" type="button" class="btn btn-primary">
+                                    <i class="fa fa-bar-chart"></i>
+                                    Ver Estadísticas
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+            </section>
+            <!-- /.content -->
+        {% endblock %}
+{% block script %}
+    <!-- REQUIRED JS SCRIPTS -->
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+    Both of these plugins are recommended to enhance the
+    user experience. -->
+{% endblock %}
