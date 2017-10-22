@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Cholito.apps.CholitoConfig',
-    'users.apps.NameConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
