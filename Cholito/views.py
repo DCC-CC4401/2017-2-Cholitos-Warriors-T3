@@ -19,7 +19,7 @@ def landingPage(request):
         return render(request, 'usuario-in-adoptar.html', context)
 
     else:
-        return render(request, 'usuario-out-adoptar.html')
+        return render(request, 'usuario-out-adoptar.html', context)
 
 def denuncia(request):
     if(request.method == 'POST'):
@@ -27,7 +27,7 @@ def denuncia(request):
         animal = request.POST['animal']
         hurt = False
         gender = request.POST['sexo']
-        if(request.POST['herido'] == 'si'):
+        if(request.POST['herido'] == 'on'):
             hurt = True
         color = request.POST['color']
         comment = request.POST['comentario']
