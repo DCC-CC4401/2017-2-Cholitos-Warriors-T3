@@ -13,5 +13,6 @@ urlpatterns =[
                           authentication_form=AuthenticationForm,
                           redirect_authenticated_user=True),
         name='login'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout')
 
 ]
