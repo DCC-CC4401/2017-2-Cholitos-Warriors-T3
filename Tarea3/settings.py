@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Cholito.apps.CholitoConfig',
+    'users.apps.NameConfig',
+    'adoption.apps.AdoptionConfig',
 ]
 
 MIDDLEWARE = [
