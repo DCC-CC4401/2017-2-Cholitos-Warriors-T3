@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'denuncias.apps.DenunciasConfig',
     'users.apps.NameConfig',
     'Cholito.apps.CholitoConfig',
     'django.contrib.admin',
