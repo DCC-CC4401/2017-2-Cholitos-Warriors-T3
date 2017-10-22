@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+{% extends 'index.html' %}
+    {% block title %} <title>Title</title> {% endblock %}
+{% block body %}
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-box-body">
+      <h2>Sign up</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign up</button>
+      </form>
+    </div>
+</div>
 </body>
-</html>
+{% endblock %}
+{% block script %} {% endblock %}
