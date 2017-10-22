@@ -31,8 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     'users.apps.NameConfig',
     'Cholito.apps.CholitoConfig',
+=======
+    'Cholito.apps.CholitoConfig',
+    'users.apps.NameConfig',
+    'adoption.apps.AdoptionConfig',
+>>>>>>> ficha-adopcion
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'Cholito/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for adopt in object_list %}
+	  <h5>{{ adopt.name }}<a href="/landing_page_in"> {{adopt.description}}</a></h5>
+	{% endfor %}
+</body>
+</html>
