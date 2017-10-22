@@ -6,7 +6,6 @@ from users.models import CholitoUser
 
 
 # Create your views here.
-
 def landingPage(request):
     ongs = ONG.objects.all()
 
