@@ -1,21 +1,23 @@
 from django.shortcuts import render, redirect
 from Cholito.models import ONG
-from denuncias.models import Denuncia
-from denuncias.models import Place
-
+from denuncias.models import Denuncia, Place
+from municipalidad.models import Municipalidad
 
 # Create your views here.
 def landingPage(request):
     ongs = ONG.objects.all()
-
+    munis = Municipalidad.objects.all()
     context = {
-        'user':request.user,
-        'ONGData':ongs
+        'user': request.user,
+        'ONGData': ongs
     }
 
     if request.user.is_authenticated():
-        return render(request, "muni-estadisticas-denuncias.html")#'usuario-in-adoptar.html', context)
-
+        miMuni = munis.filter(user_id=request.user.id)
+        if miMuni.count() == 1:
+            context['miMuni'] = miMuni.first()
+            return render(request, 'muni-estadisticas-denuncias.html', context)
+        return render(request, 'usuario-in-adoptar.html', context)
     else:
         return render(request, 'usuario-out-adoptar.html', context)
 
@@ -35,6 +37,4 @@ def denuncia(request):
         lugar.save()
         denuncia = Denuncia(kindOfAbuse=typeOfAbuse, kindOfAnimal=animal, gender=gender, colour=color, hurt=hurt, comments=comment, location=lugar)
         denuncia.save()
-    else:
-        return redirect('/')
     return landingPage(request)
