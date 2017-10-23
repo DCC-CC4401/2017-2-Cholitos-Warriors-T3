@@ -11,3 +11,4 @@ __pycache__/
 *.sqlite3
 **/migrations/
 municipalidad/profile_pictures/
+media/
