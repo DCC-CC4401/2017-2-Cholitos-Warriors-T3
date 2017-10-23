@@ -131,14 +131,14 @@
 
                      <img src="{% static 'dist/img/mapa-no-ingresado.jpeg' %}" alt="mapa" usemap="#ongmap">
                <map name="ongmap">
-                   <area shape="rect" coords="190, 109, 214, 149" alt="ONG1" href="usuario-out-ong.html">
-                   <area shape="rect" coords="542, 283, 566, 323" alt="ONG2" href="usuario-out-ong.html">
-                   <area shape="rect" coords="835, 159, 859, 199 " alt="ONG3" href="usuario-out-ong.html">
-                   <area shape="rect" coords="1037, 319, 1061, 359" alt="ONG4" href="usuario-out-ong.html">
-                   <area shape="rect" coords="114, 513, 138, 553" alt="ONG5" href="usuario-out-ong.html">
-                   <area shape="rect" coords="377, 513, 401, 553" alt="ONG6" href="usuario-out-ong.html">
-                   <area shape="rect" coords="653, 642, 677, 682" alt="ONG7" href="usuario-out-ong.html">
-                   <area shape="rect" coords="1008, 523, 1032, 563" alt="ONG8" href="usuario-out-ong.html">
+                   <area shape="rect" coords="190, 109, 214, 149" alt="ONG1" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="542, 283, 566, 323" alt="ONG2" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="835, 159, 859, 199 " alt="ONG3" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="1037, 319, 1061, 359" alt="ONG4" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="114, 513, 138, 553" alt="ONG5" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="377, 513, 401, 553" alt="ONG6" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="653, 642, 677, 682" alt="ONG7" href="{% url 'adoption:adopt' %}">
+                   <area shape="rect" coords="1008, 523, 1032, 563" alt="ONG8" href="{% url 'adoption:adopt' %}">
                </map>
                 </section>
                 <!-- /.content -->
