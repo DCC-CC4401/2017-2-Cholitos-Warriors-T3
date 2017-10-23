@@ -21,7 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('users.urls')),
     url(r'^adoption/', include('adoption.urls')),
-    url(r'^municipalidad/', include('municipalidad.urls'))
-]
+    url(r'^municipalidad/', include('municipalidad.urls')),
     url(r'^ong/', include('adoption.urls', namespace="adoption")),
 ]
