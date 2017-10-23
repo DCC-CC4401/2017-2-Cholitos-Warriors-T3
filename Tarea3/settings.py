@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'users.apps.NameConfig',
     'Cholito.apps.CholitoConfig',
     'adoption.apps.AdoptionConfig',
+    'ong.apps.OngConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
