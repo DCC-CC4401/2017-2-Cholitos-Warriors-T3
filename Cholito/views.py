@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from Cholito.models import ONG
 from denuncias.models import Denuncia
 from denuncias.models import Place
-from users.models import CholitoUser
 
 
 # Create your views here.

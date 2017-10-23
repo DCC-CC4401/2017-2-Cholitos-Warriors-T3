@@ -1,39 +1,12 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
+{% extends 'index.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% load staticfiles %}
+
+{% block title %}
     <title>ONG | Cholito</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="dist/css/skins/all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
-    <link rel="stylesheet" href="dist/css/general.css">
+{% endblock %}
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
+{% block body %}
 
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -62,14 +35,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">Juan Tapia</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
                                     <p>Juan Tapia</p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -80,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </button>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="login.html" class="btn btn-default btn-flat">Salir</a>
+                                        <a href="{% url 'users:login' %}" class="btn btn-default btn-flat">Salir</a>
                                     </div>
                                 </li>
                             </ul>
@@ -96,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <br>
@@ -107,41 +80,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <ul class="sidebar-menu" data-widget="tree">
                     <!-- Optionally, you can add icons to the links -->
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-search"></i>
-                            <span>Adoptar</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
+                        <a href="{% url 'landingpage' %}">
+                            <i class="fa fa-map-marker"></i>
+                            <span>Mapa</span>
                         </a>
-                        <ul class="treeview-menu c-filtro-adoptar">
-                            <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Tipo
-                                    </label>
-                                </div>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>Perro</option>
-                                    <option>Gato</option>
-                                    <option>Loro</option>
-                                    <option>Vaca</option>
-                                    <option>Caballo</option>
-                                </select>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Edad
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option>0-1</option>
-                                    <option>2-4</option>
-                                    <option>4-10</option>
-                                </select>
-                            </div>
-                        </ul>
                     </li>
                     <li>
                         <a href="#" data-toggle="modal" data-target="#myModalDenuncia">
@@ -168,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <h1>
                     <div class="row">
                         <div class="c-fundacion-title">
-                            <img src="dist/img/ong-edra.png" class="user-image" alt="Fundacion EDRA Image" width="100">
+                            <img src="{% static 'dist/img/ong-edra.png' %}" class="user-image" alt="Fundacion EDRA Image" width="100">
                         </div>
                         <div class="col-xs-6">
                             <br>
@@ -186,18 +128,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <section class="content container-fluid">
                 <div class="row">
+                    {% for animal in animals %}
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/perro-100x100.jpg');">
+                            <span class="info-box-icon" style="background:url('{{animal.picture_location}}');">
                             </span>
                             <div class="info-box-content">
                                 <span class="info-box-number">
-                                    Candy
+                                    {{animal.name}}
                                 </span>
-                                <span class="info-box-text">Perro | Hembra</span>
+                                <span class="info-box-text">{{animal.type}} | {{animal.gender}}</span>
                                 <div class="c-info-box__btns">
                                     <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
+                                        {% with animal.id|stringformat:"s" as animal_id %}
+                                            {% with "#myModal"|add:animal_id as modal_id %}
+                                                <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target={{modal_id}}>
+                                            {% endwith %}
+                                        {% endwith %}
                                             <i class="fa fa-eye"></i>
                                             &nbsp; Ver
                                         </a>
@@ -206,66 +153,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/gato-100x100.jpg') right bottom;">
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-number">
-                                    Tomás
-                                </span>
-                                <span class="info-box-text">Gato | Macho</span>
-                                <div class="c-info-box__btns">
-                                    <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
-                                            <i class="fa fa-eye"></i>
-                                            &nbsp; Ver
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/perro-100x100.jpg');">
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-number">
-                                    Candy
-                                </span>
-                                <span class="info-box-text">Perro | Hembra</span>
-                                <div class="c-info-box__btns">
-                                    <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
-                                            <i class="fa fa-eye"></i>
-                                            &nbsp; Ver
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/perro-100x100.jpg');">
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-number">
-                                    Candy
-                                </span>
-                                <span class="info-box-text">Perro | Hembra</span>
-                                <div class="c-info-box__btns">
-                                    <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
-                                            <i class="fa fa-eye"></i>
-                                            &nbsp; Ver
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                 </div>
                 <!-- /.row -->
@@ -385,7 +273,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="form-group">
                             <label for="exampleInputFile">Imagen de perfil</label>
                             <br>
-                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" width="150">
+                            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="user-image" alt="User Image" width="150">
                             <br><br>
                             <input type="file" id="exampleInputFile">
                         </div>
@@ -510,6 +398,63 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </div>
     </div>
+    {% for animal in animals %}
+        {% with animal.id|stringformat:"s" as animal_id %}
+            {% with "myModal"|add:animal_id as modal_id %}
+                {% with "myModalLabel"|add:animal_id as modalLabel_id %}
+                    <div class="modal fade" id={{modal_id}} tabindex="-1" role="dialog" aria-labelledby={{modalLabel_id}}>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id={{modalLabel_id}} align="center">Subir Denuncia</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{% url 'adoption:adoption' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <!--label for="exampleInputFile">Imagen de perfil</label>
+                                                    <br-->
+                                                    <img src={{animal.picture_location}} class="user-image" alt="Animal picture" width="80%">
+                                                    <br><br>
+                                                    <!--input type="file" id="exampleInputFile"-->
+                                                </div>
+                                            </div>
+                                            {% with animal.age|stringformat:"s" as animal_age %}
+                                            <div class="col-sm-4">
+                                                    <h4>Edad Estimada: {{animal_age}} años</h4>
+                                                    <h4>En adopción desde: {{animal.in_adoption_from|date:"M"}} {{animal.in_adoption_from|date:"Y"}}</h4>
+                                            </div>
+                                            {% endwith %}
+                                            <div class="col-sm-4">
+                                                <h1>{{animal.name}}</h1>
+                                                <h4>{{animal.type}}|{{animal.gender}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            {{animal.comments}}
+                                        </div>
+                                        <hr>
+                                        <div class="buttonHolder">
+                                            {% with "button"|add:animal_id as buttonID %}
+                                                <input type="submit" name={{buttonID}} class="btn btn-primary" align="center" style="height:50px; width:200px" value="¡Adóptame!">
+                                            {% endwith %}
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endwith %}
+            {% endwith %}
+        {% endwith %}
+    {% endfor %}
+    </body>
+{% endblock %}
+
+{% block script %}
 
     <!-- REQUIRED JS SCRIPTS -->
 
@@ -523,6 +468,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
     Both of these plugins are recommended to enhance the
     user experience. -->
-</body>
 
-</html>
+{% endblock %}
