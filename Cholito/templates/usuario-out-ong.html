@@ -127,7 +127,7 @@
                                 <div class="c-info-box__btns">
                                     <div class="c-info-box__btns__one">
                                         {% with animal.id|stringformat:"s" as animal_id %}
-                                            {% with "#myModal"|add:animal_id as modal_id %}
+                                            {% with "#myAdoptionModal"|add:animal_id as modal_id %}
                                                 <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target={{modal_id}}>
                                             {% endwith %}
                                         {% endwith %}
@@ -309,8 +309,8 @@
 
     {% for animal in animals %}
         {% with animal.id|stringformat:"s" as animal_id %}
-            {% with "myModal"|add:animal_id as modal_id %}
-                {% with "myModalLabel"|add:animal_id as modalLabel_id %}
+            {% with "myAdoptionModal"|add:animal_id as modal_id %}
+                {% with "myAdoptionModalLabel"|add:animal_id as modalLabel_id %}
                     <div class="modal fade" id={{modal_id}} tabindex="-1" role="dialog" aria-labelledby={{modalLabel_id}}>
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -319,7 +319,7 @@
                                     <h4 class="modal-title" id={{modalLabel_id}} align="center">Subir Denuncia</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{% url 'adoption:adoption' %}" method="post">
+                                    <form action="{% url 'adoption:adopt' %}" method="post">
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-sm-4">
