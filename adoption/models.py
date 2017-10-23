@@ -14,13 +14,14 @@ class AdoptionForm (models.Model):
         - if the animal's been adopted or not
     """
 
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, default='pedro')
     type = models.CharField(max_length=20)
     gender = models.CharField(max_length=10)
     in_adoption_from = models.DateTimeField()
     description = models.TextField(max_length=140)
     adopted = models.BooleanField(False)
+    id_number = models.IntegerField()
+    picture_location = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name + ", "+ self.type
-
