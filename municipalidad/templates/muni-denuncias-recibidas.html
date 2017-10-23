@@ -53,6 +53,15 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% for d in denuncias %}
+                    {% csrf_token %}
+                <tr>
+                    <td>{{d.kindOfAbuse}}</td>
+                    <td>{{d.kindOfAnimal}}</td>
+                    <td>{{d.location}}</td>
+                    <td>{{d.hurt}}</td>
+                </tr>
+                {% endfor %}
                 <tr>
                     <td>Venta Ambulante</td>
                     <td>Perro</td>
