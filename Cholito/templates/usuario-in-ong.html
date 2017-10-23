@@ -70,7 +70,9 @@
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
                                     <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
-                                    <p>Juan Tapia</p>
+                                    <p>
+                                        Juan Tapia
+                                    </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
@@ -80,7 +82,7 @@
                                         </button>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{% url 'users:login' %}" class="btn btn-default btn-flat">Salir</a>
+                                        <a href="{% url 'users:logout' %}" class="btn btn-default btn-flat">Salir</a>
                                     </div>
                                 </li>
                             </ul>
@@ -106,7 +108,7 @@
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="treeview">
+                    <li>
                         <a href="{% url 'landingpage' %}">
                             <i class="fa fa-map-marker"></i>
                             <span>Mapa</span>
