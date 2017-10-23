@@ -33,6 +33,9 @@
             display: flex;
             justify-content: center;
         }
+        .buttonHolder{
+            text-align:center;
+        }
     </style>
     <div class="wrapper">
         <!-- Main Header -->
@@ -55,7 +58,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="login.html">Ingresar</a>
+                            <a href="{% url 'users:login' %}">Ingresar</a>
                         </li>
                     </ul>
                 </div>
@@ -123,7 +126,7 @@
                                 <span class="info-box-text">{{animal.type}} | {{animal.gender}}</span>
                                 <div class="c-info-box__btns">
                                     <div class="c-info-box__btns__one">
-                                        {% with animal.id_number|stringformat:"s" as animal_id %}
+                                        {% with animal.id|stringformat:"s" as animal_id %}
                                             {% with "#myModal"|add:animal_id as modal_id %}
                                                 <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target={{modal_id}}>
                                             {% endwith %}
@@ -303,8 +306,9 @@
             </div>
         </div>
     </div>
+
     {% for animal in animals %}
-        {% with animal.id_number|stringformat:"s" as animal_id %}
+        {% with animal.id|stringformat:"s" as animal_id %}
             {% with "myModal"|add:animal_id as modal_id %}
                 {% with "myModalLabel"|add:animal_id as modalLabel_id %}
                     <div class="modal fade" id={{modal_id}} tabindex="-1" role="dialog" aria-labelledby={{modalLabel_id}}>
@@ -315,7 +319,8 @@
                                     <h4 class="modal-title" id={{modalLabel_id}} align="center">Subir Denuncia</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="{% url 'adoption:adoption' %}" method="post">
+                                        {% csrf_token %}
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <div class="form-group">
@@ -326,19 +331,25 @@
                                                     <!--input type="file" id="exampleInputFile"-->
                                                 </div>
                                             </div>
+                                            {% with animal.age|stringformat:"s" as animal_age %}
                                             <div class="col-sm-4">
-                                                    <h4>Edad Estimada: 2 años</h4>
-                                                    <h4>En adopción desde: Febrero 2017</h4>
+                                                    <h4>Edad Estimada: {{animal_age}} años</h4>
+                                                    <h4>En adopción desde: {{animal.in_adoption_from|date:"M"}} {{animal.in_adoption_from|date:"Y"}}</h4>
                                             </div>
+                                            {% endwith %}
                                             <div class="col-sm-4">
-                                                <h1>Tomás</h1>
-                                                <h4>GATO | MACHO</h4>
+                                                <h1>{{animal.name}}</h1>
+                                                <h4>{{animal.type}}|{{animal.gender}}</h4>
                                             </div>
                                         </div>
                                         <div class="container">
-                                            <p>Este es Tomas, el gato con botas.</p>
-                                            <p>Cuenta la leyenda que este gato adorable fue el amigo del ogro Shrek,</p>
-                                            <p>que junto a burro tuvieron innmurables aventuras.</p>
+                                            {{animal.comments}}
+                                        </div>
+                                        <hr>
+                                        <div class="buttonHolder">
+                                            {% with "button"|add:animal_id as buttonID %}
+                                                <input type="submit" name={{buttonID}} class="btn btn-primary" align="center" style="height:50px; width:200px" value="¡Adóptame!">
+                                            {% endwith %}
                                         </div>
                                     </form>
                                 </div>

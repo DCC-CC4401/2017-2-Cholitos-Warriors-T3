@@ -35,14 +35,14 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">Juan Tapia</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
                                     <p>Juan Tapia</p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -53,7 +53,7 @@
                                         </button>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="login.html" class="btn btn-default btn-flat">Salir</a>
+                                        <a href="{% url 'users:login' %}" class="btn btn-default btn-flat">Salir</a>
                                     </div>
                                 </li>
                             </ul>
@@ -69,7 +69,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <br>
@@ -80,7 +80,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <!-- Optionally, you can add icons to the links -->
                     <li class="treeview">
-                        <a href="#">
+                        <a href="{% url 'landingpage' %}">
                             <i class="fa fa-map-marker"></i>
                             <span>Mapa</span>
                         </a>
@@ -110,7 +110,7 @@
                 <h1>
                     <div class="row">
                         <div class="c-fundacion-title">
-                            <img src="dist/img/ong-edra.png" class="user-image" alt="Fundacion EDRA Image" width="100">
+                            <img src="{% static 'dist/img/ong-edra.png' %}" class="user-image" alt="Fundacion EDRA Image" width="100">
                         </div>
                         <div class="col-xs-6">
                             <br>
@@ -128,18 +128,23 @@
             <!-- Main content -->
             <section class="content container-fluid">
                 <div class="row">
+                    {% for animal in animals %}
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                         <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/perro-100x100.jpg');">
+                            <span class="info-box-icon" style="background:url('{{animal.picture_location}}');">
                             </span>
                             <div class="info-box-content">
                                 <span class="info-box-number">
-                                    Candy
+                                    {{animal.name}}
                                 </span>
-                                <span class="info-box-text">Perro | Hembra</span>
+                                <span class="info-box-text">{{animal.type}} | {{animal.gender}}</span>
                                 <div class="c-info-box__btns">
                                     <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
+                                        {% with animal.id|stringformat:"s" as animal_id %}
+                                            {% with "#myModal"|add:animal_id as modal_id %}
+                                                <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target={{modal_id}}>
+                                            {% endwith %}
+                                        {% endwith %}
                                             <i class="fa fa-eye"></i>
                                             &nbsp; Ver
                                         </a>
@@ -148,66 +153,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/gato-100x100.jpg') right bottom;">
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-number">
-                                    Tomás
-                                </span>
-                                <span class="info-box-text">Gato | Macho</span>
-                                <div class="c-info-box__btns">
-                                    <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
-                                            <i class="fa fa-eye"></i>
-                                            &nbsp; Ver
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/perro-100x100.jpg');">
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-number">
-                                    Candy
-                                </span>
-                                <span class="info-box-text">Perro | Hembra</span>
-                                <div class="c-info-box__btns">
-                                    <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
-                                            <i class="fa fa-eye"></i>
-                                            &nbsp; Ver
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon" style="background:url('dist/img/perro-100x100.jpg');">
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-number">
-                                    Candy
-                                </span>
-                                <span class="info-box-text">Perro | Hembra</span>
-                                <div class="c-info-box__btns">
-                                    <div class="c-info-box__btns__one">
-                                        <a href="#" type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal2">
-                                            <i class="fa fa-eye"></i>
-                                            &nbsp; Ver
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                 </div>
                 <!-- /.row -->
@@ -327,7 +273,7 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Imagen de perfil</label>
                             <br>
-                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image" width="150">
+                            <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="user-image" alt="User Image" width="150">
                             <br><br>
                             <input type="file" id="exampleInputFile">
                         </div>
@@ -452,7 +398,60 @@
             </div>
         </div>
     </div>
-</body>
+    {% for animal in animals %}
+        {% with animal.id|stringformat:"s" as animal_id %}
+            {% with "myModal"|add:animal_id as modal_id %}
+                {% with "myModalLabel"|add:animal_id as modalLabel_id %}
+                    <div class="modal fade" id={{modal_id}} tabindex="-1" role="dialog" aria-labelledby={{modalLabel_id}}>
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id={{modalLabel_id}} align="center">Subir Denuncia</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{% url 'adoption:adoption' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <!--label for="exampleInputFile">Imagen de perfil</label>
+                                                    <br-->
+                                                    <img src={{animal.picture_location}} class="user-image" alt="Animal picture" width="80%">
+                                                    <br><br>
+                                                    <!--input type="file" id="exampleInputFile"-->
+                                                </div>
+                                            </div>
+                                            {% with animal.age|stringformat:"s" as animal_age %}
+                                            <div class="col-sm-4">
+                                                    <h4>Edad Estimada: {{animal_age}} años</h4>
+                                                    <h4>En adopción desde: {{animal.in_adoption_from|date:"M"}} {{animal.in_adoption_from|date:"Y"}}</h4>
+                                            </div>
+                                            {% endwith %}
+                                            <div class="col-sm-4">
+                                                <h1>{{animal.name}}</h1>
+                                                <h4>{{animal.type}}|{{animal.gender}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            {{animal.comments}}
+                                        </div>
+                                        <hr>
+                                        <div class="buttonHolder">
+                                            {% with "button"|add:animal_id as buttonID %}
+                                                <input type="submit" name={{buttonID}} class="btn btn-primary" align="center" style="height:50px; width:200px" value="¡Adóptame!">
+                                            {% endwith %}
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endwith %}
+            {% endwith %}
+        {% endwith %}
+    {% endfor %}
+    </body>
 {% endblock %}
 
 {% block script %}

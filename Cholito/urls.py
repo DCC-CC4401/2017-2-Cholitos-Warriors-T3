@@ -3,5 +3,4 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.denuncia, name='landingpage'),
-    url(r'^ong/', views.adopcion, name='adopcion')
 ]
