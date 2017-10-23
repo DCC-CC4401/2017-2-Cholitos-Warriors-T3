@@ -13,9 +13,8 @@ class CholitoUserSignUp(ModelForm):
         fields = '__all__'
 
 class UserCreationForm(UserCreationForm):
-
     class Meta:
         model = User
-        fields =  fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
 
-UserCholitoUserFormset = inlineformset_factory(User, CholitoUser, form = CholitoUserSignUp, can_delete=False)
+CholitoUserFormset = inlineformset_factory(User, CholitoUser, form =CholitoUserSignUp, can_delete=False)
