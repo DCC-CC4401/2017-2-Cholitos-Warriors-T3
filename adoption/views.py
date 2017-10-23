@@ -25,7 +25,8 @@ def adopcion(request):
 
     animals = AdoptionForm.objects.all()
     context = {
-        'animals':animals
+        'animals':animals,
+        'user':request.user
     }
 
     if request.user.is_authenticated():
