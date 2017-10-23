@@ -45,9 +45,7 @@ def adoptionPage(request):
         if buttonID != -1:
             animal = AdoptionForm.objects.get(id=buttonID)
             animal.adoptionRequests = animal.adoptionRequests + 1
-            adoptionRequest = AdoptionRequest(animal=animal, user=User.objects.get(username=request.user.username))
+            adoptionRequest = AdoptionRequest(animal=animal, user=User.objects.get(id=request.user.id))
             animal.save()
             adoptionRequest.save()
-        return adopcion(request)
-    else:
-        return adopcion(request)
+    return adopcion(request)
