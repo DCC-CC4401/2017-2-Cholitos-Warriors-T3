@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% block nombre_perfil %}{{ miMuni.name }}{% endblock %}
+{% block perfil_imagen_chica %}<img src="{{miMuni.profile_picture.url}}" class="user-image" alt="User Image">{% endblock %}
+{% block perfil_imagen_2 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
+{% block nombre_perfil_2 %}<p>{{ miMuni.name }}</p>{% endblock %}
+{% block perfil_imagen_3 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
+{% block nombre_perfil_3 %}{{ miMuni.name }}{% endblock %}
+{% block perfil_imagen_grande %}<img src="{{miMuni.profile_picture.url}}" class="user-image" alt="User Image" width="150">{% endblock %}
+
 {% block botones_laterales %}
     <li>
         <a href="{% url 'municipalidad:fichasdenuncias'%}">
@@ -48,8 +56,9 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <i class="fa fa-bar-chart-o"></i>
-                        <h3 class="box-title">Adopción</h3>
+                        <h3 class="box-title">Denuncias hechas </h3>
                         <div class="box-tools pull-right">
+                            <!--button class="randomize">randomize</button-->
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
                             </button>
@@ -71,7 +80,7 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <i class="fa fa-bar-chart-o"></i>
-                        <h3 class="box-title">Esterilización</h3>
+                        <h3 class="box-title">Tipo de denuncias</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -82,7 +91,7 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <div id="bar-chart-2" class="c-bar-chart"></div>
+                        <div id="pie-chart-1" class="c-bar-chart"></div>
                     </div>
                     <!-- /.box-body-->
                 </div>
@@ -108,71 +117,53 @@
     <script src="{% static 'bower_components/Flot/jquery.flot.categories.js'%}"></script>
 
     <!-- Page script -->
+    <script src="//d3plus.org/js/d3.js"></script>
+    <script src="//d3plus.org/js/d3plus.js"></script>
     <script>
-        $(function () {
-            /*
-            * BAR CHART
-            * ---------
-            */
-            var bar_data = {
-                data : [['Abril', 10], ['Mayo', 8], ['Junio', 4], ['Julio', 13], ['Agosto', 17], ['Septiembre', 2]],
-                color: '#3c8dbc'
-            };
-            $.plot('#bar-chart-1', [bar_data], {
-                grid  : {
-                borderWidth: 1,
-                borderColor: '#f3f3f3',
-                tickColor  : '#f3f3f3'
-                },
-                series: {
-                bars: {
-                show    : true,
-                barWidth: 0.5,
-                align   : 'center'
-                }
-                },
-                xaxis : {
-                mode      : 'categories',
-                tickLength: 0
-                }
-            });
-            var bar_data = {
-                data : [['Abril', 16], ['Mayo', 5], ['Junio', 11], ['Julio', 16], ['Agosto', 8], ['Septiembre', 1]],
-                color: '#3c8dbc'
-            };
-            $.plot('#bar-chart-2', [bar_data], {
-                grid  : {
-                borderWidth: 1,
-                borderColor: '#f3f3f3',
-                tickColor  : '#f3f3f3'
-                },
-                series: {
-                bars: {
-                show    : true,
-                barWidth: 0.5,
-                align   : 'center'
-                }
-                },
-                xaxis : {
-                mode      : 'categories',
-                tickLength: 0
-                }
-            })
-        /* END BAR CHART */
 
-        });
+      var data = [
+        {"mes": 1, "name":"Enero", "Cantidad": 40},
+        {"mes": 2, "name":"Febrero", "Cantidad": 33},
+        {"mes": 3, "name":"Marzo", "Cantidad": 26},
+        {"mes": 4, "name":"Abril", "Cantidad": 22},
+          {"mes": 5, "name":"Mayo", "Cantidad": 15},
+        {"mes": 6, "name":"Junio", "Cantidad": 21},
+        {"mes": 7, "name":"Julio", "Cantidad": 33},
+        {"mes": 8, "name":"Agosto", "Cantidad": 35},
+          {"mes": 9, "name":"Septiembre", "Cantidad": 35},
+        {"mes": 10, "name":"Octubre", "Cantidad": 39},
+        {"mes": 11, "name":"Noviembre", "Cantidad": 50},
+          {"mes": 12, "name":"Diciembre", "Cantidad": 51}
+      ];
 
-        /*
-        * Custom Label formatter
-        * ----------------------
-        */
-        function labelFormatter(label, series) {
-            return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
-            + label
-            + '<br>'
-            + Math.round(series.percent) + '%</div>'
-        }
-    </script>
+    var visualization = d3plus.viz()
+        .container("#bar-chart-1")
+        .data(data)
+        .type("bar")
+        .id("name")
+        .x("mes")
+        .y("Cantidad")
+        .draw();
+
+        var data2 = [
+        {"value": 70, "name": "Abandono en la calle"},
+        {"value": 9, "name": "Exposición a altas temperaturas"},
+        {"value": 13, "name": "Falta de agua"},
+        {"value": 21, "name": "Falta de comida"},
+        {"value": 89, "name": "Violencia"},
+        {"value": 29, "name": "Venta ambulante"}
+      ];
+      d3plus.viz()
+        .container("#pie-chart-1")
+        .data(data2)
+        .type("pie")
+        .id("name")
+        .size("value")
+        .draw()
+
+</script>
+
+    {% block graf %}{% endblock %}
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
     Both of these plugins are recommended to enhance the

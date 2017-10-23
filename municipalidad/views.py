@@ -6,7 +6,20 @@ from Cholito.models import ONG
 
 # Create your views here.
 def stats_denuncias(request):
-    return render(request, 'muni-estadisticas-denuncias.html')
+    template_name = 'muni-estadisticas-denuncias.html'
+
+    munis = Municipalidad.objects.all()
+    context = {
+        'user': request.user,
+        'ONGData': ONG.objects.all(),
+    }
+    try:
+        miMuni = munis.filter(user_id=request.user.id)
+        if miMuni.count() == 1:
+            context['miMuni'] = miMuni.first()
+    except KeyError:
+        context['miMuni'] = Municipalidad(comuna="dummy")
+    return render(request, template_name, context)
 
 def stats_fichas(request):
     return render(request, 'muni-estadisticas-ongs-fichas.html')
