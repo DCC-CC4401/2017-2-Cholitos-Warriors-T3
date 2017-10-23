@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from Cholito.models import ONG
 from denuncias.models import Denuncia, Place
 from municipalidad.models import Municipalidad
+from municipalidad.views import lista_denuncias
 
 # Create your views here.
 def landingPage(request):
@@ -16,7 +17,7 @@ def landingPage(request):
         miMuni = munis.filter(user_id=request.user.id)
         if miMuni.count() == 1:
             context['miMuni'] = miMuni.first()
-            return render(request, 'muni-estadisticas-denuncias.html', context)
+            return lista_denuncias(request)
         return render(request, 'usuario-in-adoptar.html', context)
     else:
         return render(request, 'usuario-out-adoptar.html', context)

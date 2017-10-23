@@ -20,7 +20,7 @@ class AdoptionForm (models.Model):
     in_adoption_from = models.DateTimeField()
     description = models.TextField(max_length=140)
     adopted = models.BooleanField(False)
-    picture_location = models.CharField(max_length=100)
+    picture_location = models.CharField(max_length=100) #TODO: sera la mejor forma de referirse a la imagen?
     age = models.IntegerField()
     adoptionRequests = models.IntegerField()
     comments = models.TextField()
