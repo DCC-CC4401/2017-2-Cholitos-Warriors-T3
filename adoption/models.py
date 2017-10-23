@@ -28,6 +28,13 @@ class AdoptionForm (models.Model):
     def __str__(self):
         return self.name + ", "+ self.type
 
-class AdoptionRequest(models.Model):
+class AdoptionRequest (models.Model):
+    """
+        AdoptionForm model.
+        It has:
+        - user
+        - animal
+    """
+
     user = models.ForeignKey(User, blank=True, null=True)
     animal = models.ForeignKey(AdoptionForm, blank=True, null=True)

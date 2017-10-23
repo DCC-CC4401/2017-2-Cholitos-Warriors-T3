@@ -15,7 +15,10 @@ def landingPage(request):
     if request.user.is_authenticated():
         miMuni = munis.filter(user_id=request.user.id)
         if miMuni.count() == 1:
-            context['miMuni'] = miMuni.first()
+            context = {
+                'user':request.user,
+                'muni':miMuni
+            }
             return render(request, 'muni-estadisticas-denuncias.html', context)
         return render(request, 'usuario-in-adoptar.html', context)
     else:
