@@ -16,13 +16,13 @@ class CholitoUser (models.Model):
     """
 
     user = models.OneToOneField(User)
-    profile_picture = models.ImageField(upload_to="users/profile_pictures")
+    profile_picture = models.ImageField(upload_to="usuarios")
 
     #Groups
     #municipalidad = models.ForeignKey(Municipalidad, blank=True, null=True) #TODO: App para Municipalidad
     #ong = models.ForeignKey(ONG, blank= True, null=True) #TODO: App para ONG
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
 
     def delete(self, using = None, keep_parents = False):
