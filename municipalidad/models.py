@@ -6,7 +6,7 @@ class Municipalidad(models.Model):
     name = models.CharField(max_length=50)
     comuna = models.CharField(max_length=30, unique=True, default="desconocido")
     user = models.OneToOneField(User, null=True)
-    profile_picture = models.ImageField(upload_to="municipalidad/profile_pictures", null=True)
+    profile_picture = models.ImageField(null=True)#upload_to=""
 
     def __str__(self):
         return self.comuna

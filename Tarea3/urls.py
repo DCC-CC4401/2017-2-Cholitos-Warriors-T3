@@ -14,7 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
+
+from Tarea3 import settings
 
 urlpatterns = [
     url(r'^', include('Cholito.urls')),
@@ -23,3 +26,5 @@ urlpatterns = [
     url(r'^adoption/', include('adoption.urls')),
     url(r'^municipalidad/', include('municipalidad.urls')),
 ]
+#urlpatterns += static(settings.STATIC.URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
