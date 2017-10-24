@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User, Permission, Group
-from Cholito.models import ONG
 from municipalidad.models import Municipalidad
 
 class CholitoUser (models.Model):

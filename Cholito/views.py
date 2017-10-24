@@ -1,16 +1,14 @@
 from django.shortcuts import render, redirect
-from Cholito.models import ONG
 from denuncias.models import Denuncia, Place
 from municipalidad.models import Municipalidad
 from municipalidad.views import lista_denuncias
 
 # Create your views here.
 def landingPage(request):
-    ongs = ONG.objects.all()
+
     munis = Municipalidad.objects.all()
     context = {
         'user': request.user,
-        'ONGData': ongs
     }
 
     if request.user.is_authenticated():
