@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from denuncias.models import Denuncia
 from municipalidad.models import Municipalidad
-from Cholito.models import ONG
 
 # Create your views here.
 def stats_denuncias(request):
@@ -17,7 +16,6 @@ def lista_denuncias(request):
     munis = Municipalidad.objects.all()
     context = {
         'user': request.user,
-        'ONGData': ONG.objects.all(),
     }
     try:
         miMuni = munis.filter(user_id=request.user.id)
