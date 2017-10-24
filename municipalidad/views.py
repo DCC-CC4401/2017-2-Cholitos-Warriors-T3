@@ -21,7 +21,17 @@ def stats_denuncias(request):
     return render(request, template_name, context)
 
 def stats_fichas(request):
-    return render(request, 'muni-estadisticas-ongs-fichas.html')
+    munis = Municipalidad.objects.all()
+    context = {
+        'user': request.user,
+    }
+    try:
+        miMuni = munis.filter(user_id=request.user.id)
+        if miMuni.count() == 1:
+            context['miMuni'] = miMuni.first()
+    except KeyError:
+        context['miMuni'] = Municipalidad(comuna="dummy")
+    return render(request, 'muni-estadisticas-ongs-fichas.html', context)
 
 def lista_denuncias(request):
     template_name = 'muni-denuncias-recibidas.html'

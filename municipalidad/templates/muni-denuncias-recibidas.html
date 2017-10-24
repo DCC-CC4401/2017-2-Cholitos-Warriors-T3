@@ -5,7 +5,7 @@
 {% block perfil_imagen_2 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
 {% block nombre_perfil_2 %}<p>{{ miMuni.name }}</p>{% endblock %}
 {% block perfil_imagen_3 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
-{% block nombre_perfil_3 %}<p>Municipalidad <br>{{ miMuni.comuna }}</p>{% endblock %}
+{% block nombre_perfil_3 %}<p>Municipalidad de<br>{{ miMuni.comuna }}</p>{% endblock %}
 {% block perfil_imagen_grande %}<img src="{{miMuni.profile_picture.url}}" class="user-image" alt="User Image" width="150">{% endblock %}
 {% block botones_laterales %}
     {% load staticfiles %}
