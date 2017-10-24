@@ -5,7 +5,6 @@ from municipalidad.views import lista_denuncias
 
 # Create your views here.
 def landingPage(request):
-
     munis = Municipalidad.objects.all()
     context = {
         'user': request.user,

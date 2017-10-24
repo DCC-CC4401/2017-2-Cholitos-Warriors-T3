@@ -5,7 +5,7 @@
 {% block perfil_imagen_2 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
 {% block nombre_perfil_2 %}<p>{{ miMuni.name }}</p>{% endblock %}
 {% block perfil_imagen_3 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
-{% block nombre_perfil_3 %}{{ miMuni.name }}{% endblock %}
+{% block nombre_perfil_3 %}<p>Municipalidad <br>{{ miMuni.comuna }}</p>{% endblock %}
 {% block perfil_imagen_grande %}<img src="{{miMuni.profile_picture.url}}" class="user-image" alt="User Image" width="150">{% endblock %}
 {% block botones_laterales %}
     {% load staticfiles %}
@@ -56,37 +56,28 @@
                     <th scope="col">Tipo Denuncia</th>
                     <th scope="col">Animal</th>
                     <th scope="col">Dirección</th>
-                    <th scope="col">Herido</th>
+                    <th scope="col">Estado</th>
+                    <td scope="col"></td>
                 </tr>
                 </thead>
                 <tbody>
                 {% for d in denuncias %}
-                    {% csrf_token %}
-                <tr>
-                    <td>{{d.kindOfAbuse}}</td>
-                    <td>{{d.kindOfAnimal}}</td>
-                    <td>{{d.location}}</td>
-                    <td>{{d.hurt}}</td>
-                </tr>
+                    {% with d.id|stringformat:"s" as denuncia_id %}
+                        <tr>
+                            <td>{{d.kindOfAbuse}}</td>
+                            <td>{{d.kindOfAnimal}}</td>
+                            <td>{{d.location}}</td>
+                            <td>{{d.actual_state}}</td>
+                            <td>
+                                <form method="POST" action="{% url 'municipalidad:detalledenuncia' denuncia_id %}">
+                                    {% csrf_token %}
+                                <i class="fa fa-eye"></i> <input type="submit" class="btn-primary" value="Detalle"/>
+                                </form>
+                            </td>
+
+                        </tr>
+                    {% endwith %}
                 {% endfor %}
-                <tr>
-                    <td>Venta Ambulante</td>
-                    <td>Perro</td>
-                    <td>Avda Blanco Encalada 2445</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>Violencia</td>
-                    <td>Perro</td>
-                    <td>Grajales 2623</td>
-                    <td>Si</td>
-                </tr>
-                <tr>
-                    <td>Falta de Agua</td>
-                    <td>Gato</td>
-                    <td>Av Matta 56</td>
-                    <td>No</td>
-                </tr>
                 </tbody>
             </table>
         </div>

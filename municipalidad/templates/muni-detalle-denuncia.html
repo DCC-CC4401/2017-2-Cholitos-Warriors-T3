@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block nombre_perfil %}{{ miMuni.name }}{% endblock %}
+{% block perfil_imagen_chica %}<img src="{{miMuni.profile_picture.url}}" class="user-image" alt="User Image">{% endblock %}
+{% block perfil_imagen_2 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
+{% block nombre_perfil_2 %}<p>{{ miMuni.name }}</p>{% endblock %}
+{% block perfil_imagen_3 %}<img src="{{miMuni.profile_picture.url}}" class="img-circle" alt="User Image">{% endblock %}
+{% block nombre_perfil_3 %}<p>Municipalidad <br>{{ miMuni.comuna }}</p>{% endblock %}
+{% block perfil_imagen_grande %}<img src="{{miMuni.profile_picture.url}}" class="user-image" alt="User Image" width="150">{% endblock %}
+{% block botones_laterales %}
+    {% load staticfiles %}
+    <!-- Optionally, you can add icons to the links -->
+    <li class="active">
+        <a href="#">
+            <i class="fa fa-bullhorn"></i>
+            <span>Denuncias</span>
+        </a>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-bar-chart"></i>
+            <span>Estadísticas</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="{% url 'municipalidad:statsdenuncias' %}">
+                    <i class="fa fa-circle-o"></i>
+                    Denuncias
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'municipalidad:statsongs' %}">
+                    <i class="fa fa-circle-o"></i>
+                    ONG
+                </a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+{% block contenido %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Denuncias Recibidas
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content container-fluid">
+        <div class="box">
+
+             <div class="row">
+                 <div class="col-sm-6 col-sm-offset-3">
+                     <div class="page-header">
+                         <h2>{{ denuncia }}</h2>
+                     </div>
+                 </div>
+             </div>
+            <div class="row">
+                 <div class="col-sm-6 col-sm-offset-3">
+                     <p><b>Tipo de abuso:</b> {{ denuncia.kindOfAbuse }}</p>
+                     <p><b>Tipo de animal:</b> {{ denuncia.kindOfAnimal }}</p>
+                     <p><b>Sexo:</b> {{ denuncia.gender }}</p>
+                     <p><b>Color:</b> {{ denuncia.colour }}</p>
+                     {% if denuncia.hurt is True %}
+                        <p><b>Herido/a:</b> Si </p>
+                    {% else %}
+                        <p><b>Herido/a:</b> No </p>
+                    {% endif %}
+                     <p><b>Fecha denuncia:</b> {{ denuncia.denouncedDate }}</p>
+                     <p><b>Ubicación:</b> {{ denuncia.location }}</p>
+                     <p><b>Comentario:</b> {{ denuncia.comments }}</p>
+                     </div>
+             </div>
+
+
+            <form method="POST" action="{% url 'municipalidad:cambiarestado' denuncia.id %}">
+                {% csrf_token %}
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <h4>Editar estado denuncia: <b>{{ denuncia.actual_state }}</b>  </h4>
+                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <label for="reportada" style="margin:10px">Reportada</label>
+                        <input type="radio" name="estado" id="reportada" style="margin:10px" value="reportada">
+                        <label for="consolidada" style="margin:10px">Consolidada</label>
+                        <input type="radio" name="estado" id="consolidada" style="margin:10px" value="consolidada">
+                        <label for="verificada" style="margin:10px">Verificada</label>
+                        <input type="radio" name="estado" id="verificada" style="margin:10px" value="verificada">
+                        <label for="cerrada" style="margin:10px">Cerrada</label>
+                        <input type="radio" name="estado" id="cerrada" style="margin:10px" value="cerrada">
+                        <label for="deshechada" style="margin:10px">Deshechada</label>
+                        <input type="radio" name="estado" id="deshechada" style="margin:10px" value="deshechada">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-offset-5">
+                        <input type="submit" class="btn btn-primary" value="Editar"/>
+                        <a href="{% url 'municipalidad:fichasdenuncias'%}" class="btn btn-primary">Salir</a>
+                    </div>
+                </div>
+                <hr>
+            </form>
+
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+{% endblock %}
+{% block script %}
+    <!-- REQUIRED JS SCRIPTS -->
+    <!-- AdminLTE App -->
+    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+{% endblock %}
